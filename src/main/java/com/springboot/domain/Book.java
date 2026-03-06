@@ -15,15 +15,20 @@ public class Book {
 
 	
 	@BookId
-	@Pattern(regexp="ISBN[1-9]+")
+	//@Pattern(regexp="ISBN[1-9]+")
+	@Pattern(regexp="ISBN[1-9]+", message="{pattern.book.bookId}")
 	private String bookId; //도서ID
 	
-	@Size(min=4, max=50)
+	//@Size(min=4, max=50)
+	@Size(min=4, max=50, message="{Size.book.name}")
 	private String name; // 도서명
 	
-	@Min(value=0)
-	@Digits(integer=8, fraction=2)
-	@NotNull
+	//@Min(value=0)
+	//@Digits(integer=8, fraction=2)
+	//@NotNull
+	@Min(value=0, message="{Min.book.unitPrice}")
+	@Digits(integer=8, fraction=2, message="{Digits.book.unitPrice}")
+	@NotNull(message="{NotNull.book.unitPrice}")
 	private BigDecimal unitPrice; // 가격
 	private String author; // 저자
 	private String description; // 설명
