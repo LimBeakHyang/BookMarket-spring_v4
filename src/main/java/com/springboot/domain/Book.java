@@ -8,9 +8,13 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import com.springboot.validator.BookId;
+
 @Data 
 public class Book {
 
+	
+	@BookId
 	@Pattern(regexp="ISBN[1-9]+")
 	private String bookId; //도서ID
 	
