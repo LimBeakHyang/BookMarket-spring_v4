@@ -30,6 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.springboot.domain.Book;
 import com.springboot.service.BookService;
+import com.springboot.validator.UnitsInStockValidator;
 
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
@@ -43,6 +44,9 @@ public class BookController {
 
 	@Value("${file.uploadDir}")
 	 String fileDir;
+	
+	@Autowired
+	private UnitsInStockValidator unitsInStockValidator;
 	
 	
 	@GetMapping
@@ -164,6 +168,7 @@ public class BookController {
 	 
 	 @InitBinder
 	 public void initBinder(WebDataBinder binder) {
+		 binder.setValidator(unitsInStockValidator);
 		 binder.setAllowedFields("bookId","name","unitPrice","author","description","publisher","category",
 	                              "unitsInStock","totalPages", "releaseDate", "condition", "bookImage");
 	 }
