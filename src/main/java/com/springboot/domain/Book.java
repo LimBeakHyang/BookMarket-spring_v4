@@ -2,12 +2,24 @@ package com.springboot.domain;
 import java.math.BigDecimal;
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 @Data 
 public class Book {
 
+	@Pattern(regexp="ISBN[1-9]+")
 	private String bookId; //도서ID
+	
+	@Size(min=4, max=50)
 	private String name; // 도서명
+	
+	@Min(value=0)
+	@Digits(integer=8, fraction=2)
+	@NotNull
 	private BigDecimal unitPrice; // 가격
 	private String author; // 저자
 	private String description; // 설명

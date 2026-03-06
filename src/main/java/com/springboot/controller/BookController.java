@@ -8,12 +8,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.hibernate.validator.internal.util.privilegedactions.NewInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -30,6 +32,7 @@ import com.springboot.domain.Book;
 import com.springboot.service.BookService;
 
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping(value = "/books")
@@ -45,7 +48,8 @@ public class BookController {
 	@GetMapping
 	public String requestBookList(Model model) {
 		List<Book> list = bookService.getAllBookList();
-		model.addAttribute("bookList", list);
+	 /* model.addAttribute("bookList", list); */
+		model.addAttribute("book", new Book()); 
 		return "books";
 	}	
 	/*
@@ -90,14 +94,18 @@ public class BookController {
 	}
 	
 	 @GetMapping("/add")
-	 public String requestAddBookForm() {
-		
+	 public String requestAddBookForm(Model model) {
+		 model.addAttribute("book", new Book());
 		 return "addBook";
 	 }
 	 
 	 
 	 @PostMapping("/add")	  
-	 public String submitAddNewBook(@ModelAttribute Book book) {
+	 public String submitAddNewBook(@Valid @ModelAttribute Book book, BindingResult bindingResult) {
+		 
+		 if(bindingResult.hasErrors()) {
+			 return "addBook";
+		 }
 		 
 	 MultipartFile bookImage = book.getBookImage();  
 
