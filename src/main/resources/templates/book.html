@@ -37,17 +37,19 @@
 				<h3 th:text="${book.name}"></h3>
 				<p th:text="${book.description}"></p>
 				<br>
-				<p><b>도서코드 : </b><span class="badge text-bg-info" th:text="${book.bookId}"></span>
-				<p><b>저자</b> : <span th:text="${book.author}">
-						<p><b>출판사</b> : <span th:text="${book.publisher}">
-								<p><b>출판일</b> : <span th:text="${book.releaseDate}">
-										<p><b>분류</b> : <span th:text="${book.category}">
-												<p><b>재고수</b> : <span th:text="${book.unitsInStock}">
+				<p><b>도서코드 : </b><span class="badge text-bg-info" th:text="${book.bookId}"></span></p>
+				<p><b>저자</b> : <span th:text="${book.author}"></span></p>
+						<p><b>출판사</b> : <span th:text="${book.publisher}"></span></p>
+								<p><b>출판일</b> : <span th:text="${book.releaseDate}"></span></p>
+										<p><b>분류</b> : <span th:text="${book.category}"></span></p>
+												<p><b>재고수</b> : <span th:text="${book.unitsInStock}"></span></p>
 														<h4 th:text="${book.unitPrice}+'원'"></h4>
 														<br>
 														<p><a href="#" class="btn btn-primary">도서주문 &raquo;</a>
+														<a href="/bookmarket/cart" class="btn btn-warning">장바구니 &raquo;</a>
 															<a href="/bookmarket/books" class="btn btn-secondary">도서 목록
 																&raquo;</a>
+																
 
 
 			</div>
