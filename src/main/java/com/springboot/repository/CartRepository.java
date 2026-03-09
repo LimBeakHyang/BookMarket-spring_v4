@@ -11,4 +11,5 @@ public interface CartRepository {
 	
 	// cartId를 이용해서 장바구니를 조회하는 메서드
 	Cart read(String cartId);
+	void update(String cartId, Cart cart);
 }

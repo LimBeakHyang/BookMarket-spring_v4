@@ -8,8 +8,10 @@ import java.util.Map;
 import java.util.Set;
 
 import org.springframework.stereotype.Repository;
+import com.springboot.exception.BookIdException;
 
 import com.springboot.domain.Book;
+
 
 @Repository
 public class BookRepositoryImpl implements BookRepository {
@@ -116,6 +118,13 @@ public class BookRepositoryImpl implements BookRepository {
 	            break;
 	        } 
 	     }
+	    /* 에러메시지 창 띄우는 요소
+	    if (bookInfo == null) {
+	        throw new BookIdException(bookId);
+	    }
+	    return bookInfo;
+	} */
+	    
 	     if(bookInfo == null) 
 	          throw new IllegalArgumentException("도서ID가 "+bookId + "인 해당 도서를 찾을 수 없습니다.");
 	     return bookInfo;

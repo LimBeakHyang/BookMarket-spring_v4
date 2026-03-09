@@ -15,11 +15,11 @@ import com.springboot.repository.CartRepository;
 // 이 클래스가 서비스 역할을 하는 스프링 Bean임을 표시
 @Service
 public class CartServiceImpl implements CartService {
-	
+
 	// CartRepository 타입의 객체를 스프링이 자동으로 주입함
 	@Autowired
 	private CartRepository cartRepository;
-	
+
 	// 장바구니 생성 기능
 	@Override
 	public Cart create(Cart cart) {
@@ -32,5 +32,17 @@ public class CartServiceImpl implements CartService {
 	public Cart read(String cartId) {
 		// 전달받은 cartId를 이용해서 Repository에서 장바구니 조회
 		return cartRepository.read(cartId);
+	}
+
+	/*
+	 * 장바구니 수정 메서드 전달받은 장바구니 ID(cartId)에 해당하는 장바구니 정보를 Cart 객체(cart)의 내용으로 수정하도록
+	 * Repository에 요청함
+	 * 
+	 * @param cartId 수정할 장바구니 ID
+	 * 
+	 * @param cart 수정할 장바구니 정보
+	 */
+	public void update(String cartId, Cart cart) {
+		cartRepository.update(cartId, cart);
 	}
 }

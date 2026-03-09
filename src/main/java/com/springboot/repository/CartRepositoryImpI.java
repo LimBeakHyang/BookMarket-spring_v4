@@ -25,7 +25,16 @@ public class CartRepositoryImpI implements CartRepository {
 		listOfCartsMap = new HashMap<String, Cart>();
 	}
 	
-	// 장바구니를 생성하여 저장하는 메서드
+	/*
+	 * 장바구니 생성 메서드
+	 * 전달받은 Cart 객체를 Map에 저장함
+	 * 
+	 * [동작 과정]
+	 * 1. 이미 같은 장바구니 ID가 존재하는지 검사
+	 * 2. 존재하면 예외 발생
+	 * 3. 존재하지 않으면 Map에 저장
+	 * 4. 저장한 Cart 객체 반환
+	 */
 	public Cart create(Cart cart) {
 		
 		// 이미 같은 장바구니 ID가 존재하는지 확인
@@ -49,5 +58,33 @@ public class CartRepositoryImpI implements CartRepository {
 		
 		// Map에서 해당 cartId에 해당하는 Cart 객체를 반환
 		return listOfCartsMap.get(cartId);
+	}
+	
+	/*
+	 * 장바구니 수정 메서드
+	 * 기존에 저장된 장바구니를 새로운 Cart 객체로 갱신함
+	 * 
+	 * [동작 과정]
+	 * 1. 수정하려는 cartId가 존재하는지 확인
+	 * 2. 존재하지 않으면 예외 발생
+	 * 3. 존재하면 해당 cartId에 새로운 Cart 객체를 덮어써서 수정
+	 * 4. 콘솔에 수정된 장바구니 정보 출력
+	 */
+	public void update(String cartId, Cart cart) {
+		
+		// 수정할 장바구니 ID가 존재하는지 확인
+		if (!listOfCartsMap.keySet().contains(cartId)) {
+			
+			// 존재하지 않으면 수정 불가 → 예외 발생
+			throw new IllegalArgumentException(
+				String.format("장바구니 목록을 갱신할 수 없습니다. 장바구니 id(%s)가 존재하지 않습니다.", cartId)
+			);
+		}
+		
+		// 기존 장바구니 정보를 새로운 Cart 객체로 수정
+		listOfCartsMap.put(cartId, cart);
+		
+		// 수정 결과를 콘솔에 출력
+		System.out.println("장바구니 " + cart);
 	}
 }

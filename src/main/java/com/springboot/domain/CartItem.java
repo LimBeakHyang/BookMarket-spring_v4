@@ -19,7 +19,9 @@ public class CartItem {
 	
 	// 해당 도서의 총 금액
 	// 1권 가격 × 수량으로 계산됨
-	private BigDecimal totalPriceBigDecimal;
+	private BigDecimal totalPrice;
+	
+	
 	
 	// 생성자
 	// CartItem 객체를 만들 때 어떤 도서를 담을지 전달받음
@@ -34,7 +36,7 @@ public class CartItem {
 		
 		// 처음 담을 때 총 금액은 도서 1권 가격과 같으므로
 		// book의 가격을 totalPriceBigDecimal에 저장
-		this.totalPriceBigDecimal = book.getUnitPrice();
+		this.totalPrice = book.getUnitPrice();
 	}
 	
 	// 도서 정보를 변경하는 setter 메서드
@@ -59,6 +61,22 @@ public class CartItem {
 	public void updateTotalPrice() {
 		// 도서 1권 가격(book.getUnitPrice())에 수량(quantity)을 곱해서
 		// 총 금액을 계산한 후 totalPriceBigDecimal에 저장
-		totalPriceBigDecimal = this.book.getUnitPrice().multiply(new BigDecimal(this.quantity));
+		totalPrice = this.book.getUnitPrice().multiply(new BigDecimal(this.quantity));
+	}
+
+	public BigDecimal getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(BigDecimal totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public Book getBook() {
+		return book;
+	}
+
+	public int getQuantity() {
+		return quantity;
 	}
 }
