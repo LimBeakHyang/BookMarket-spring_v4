@@ -8,6 +8,7 @@
 
     <!-- 부트스트랩 CSS 파일 연결 -->
     <link href="/bookmarket/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/bookmarket/js/controllers.js"></script>
 </head>
 <body>
 <!-- 전체 화면 여백을 주는 컨테이너 -->
@@ -66,6 +67,28 @@
                     <th>비고</th>
                     <th></th>
                 </tr>
+                
+      
+                <form name="removeForm" id="removeForm" method="post">
+                	<input type="hidden" name="_method" value="delete"/>
+                		<div th:if="${cart != null}">
+                			<div th:each="item : ${cart.cartItems}">
+								<tr>
+									<!-- 책 정보 표시  -->
+									<td th:text="${item.value.book.bookId} + '-' + ${item.value.book.name}"></td>
+									<td th:text="${item.value.book.bookId} + '-' + ${item.value.book.name}"></td>
+									<td th:text="${item.value.book.unitPrice}"></td>
+									<td th:text="${item.value.quantity}"></td>
+									<td th:text="${item.value.totalPrice}"></td>
+									<td>
+										<!-- 삭제 버튼, removeFromCart 함수 호출  -->
+									 	<a th:href=" 'javascript:removeFromCart(\' ' + ${item.value.book.bookId} + '\',\' '+${cartId} + '\')' " >
+									<span class="badge text-bg-danger" th:text="삭제"></span></a>
+									</td>
+								</tr>               			
+                			</div>
+                		</div>
+                </form> 
 
                 <!-- cart 객체가 null이 아닐 때만 아래 내용 출력 -->
                 <div th:if="${cart != null}">

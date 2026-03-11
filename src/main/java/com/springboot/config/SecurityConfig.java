@@ -57,7 +57,7 @@ public class SecurityConfig {
 				.usernameParameter("username") // 사용자 이름(계정)
 				.passwordParameter("password") //사용자 계정 비밀번호
 				.permitAll()	
-				)
+				) 
 		// 로그아웃 기능 구현
 		.logout(
 				logout -> logout
@@ -67,4 +67,4 @@ public class SecurityConfig {
 		
 		return http.build();
 		}
-	}
+	} 

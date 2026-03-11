@@ -65,5 +65,17 @@ public class Cart {
 			grandTotal = grandTotal.add(item.getTotalPrice());
 		}
 	}
+	/*//booId로 삭제하기
+	public void removeCartItem(String bookId) {
+	    cartItems.remove(bookId);  // bookId로 해당 아이템 삭제
+	    updateGrandTotal();  // 총액 갱신 
+	}*/
+	
+	
+	public void removeCartItem(CartItem item) {
+		String bookId = item.getBook().getBookId();
+		cartItems.remove(bookId); // BookId의 도서 삭제
+		updateGrandTotal(); // 총액 갱신
+	} 
 
 }
