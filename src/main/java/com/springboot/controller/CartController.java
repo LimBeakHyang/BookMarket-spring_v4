@@ -120,9 +120,13 @@ public class CartController {
 		cart.removeCartItem(new CartItem(book));  // 장바구니에 bookId 도서 삭제하기
 		// cart.removeCartItem(bookId);  // bookId로 아이템 삭제
 		cartService.update(sessionId, cart); // 장바구니 갱신하기
-			
-		
 	} 
+	
+	@DeleteMapping("/{cartId}")
+	@ResponseStatus(value = HttpStatus.NO_CONTENT)
+	public void deleteCartList(@PathVariable("cartId")String cartId) {
+		cartService.delete(cartId);
+	}
 }
 			
 		

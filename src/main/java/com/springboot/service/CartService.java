@@ -17,4 +17,6 @@ public interface CartService {
 
 	// 장바구니 ID(cartId)에 해당하는 장바구니 정보를 전달받은 Cart 객체 내용으로 수정하는 메서드
 	void update(String cartId, Cart cart);
+	
+	void delete(String cartId);
 }

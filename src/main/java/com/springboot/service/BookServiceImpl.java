@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.domain.Book;
 import com.springboot.repository.BookRepository;
+import com.springboot.repository.CartRepository;
 
 
 @Service
@@ -38,6 +39,5 @@ public class BookServiceImpl implements BookService {
 	 public void setNewBook(Book book) { 
 		    bookRepository.setNewBook(book); 
 		 }
-
-
+	 
 }

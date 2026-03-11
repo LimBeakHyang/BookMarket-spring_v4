@@ -4,6 +4,8 @@ package com.springboot.repository;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.crypto.spec.IvParameterSpec;
+
 // 현재 클래스를 스프링의 Repository 빈으로 등록하기 위한 어노테이션
 import org.springframework.stereotype.Repository;
 
@@ -86,5 +88,12 @@ public class CartRepositoryImpI implements CartRepository {
 		
 		// 수정 결과를 콘솔에 출력
 		System.out.println("장바구니 " + cart);
+	}
+	// 장바구니에 등록된 모든 도서 항목을 삭제하는 메서드
+	public void delete(String cartId) { 
+		if (!listOfCartsMap.keySet().contains(cartId)){ // 장바구니 ID가 존재하지 않을 때 예외 처리
+			throw new IllegalArgumentException(String.format("장바구니 목록을 삭제할 수 없습니다. 장바구니 id(%s)가 존재하지 않습니다.",cartId));
+		}
+		listOfCartsMap.remove(cartId);
 	}
 }
