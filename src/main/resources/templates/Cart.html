@@ -82,7 +82,7 @@
 									<td th:text="${item.value.totalPrice}"></td>
 									<td>
 										<!-- 삭제 버튼, removeFromCart 함수 호출  -->
-									 	<a th:href=" 'javascript:removeFromCart(\' ' + ${item.value.book.bookId} + '\',\' '+${cartId} + '\')' " >
+									 	<a th:href=" 'javascript:removeFromCart(\'' + ${item.value.book.bookId} + '\',\' '+${cartId} + '\')' " >
 									<span class="badge text-bg-danger" th:text="삭제"></span></a>
 									</td>
 								</tr>               			

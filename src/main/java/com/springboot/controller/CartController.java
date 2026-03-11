@@ -46,13 +46,11 @@ public class CartController {
 	@Autowired
 	private CartService cartService;
 	
-	
-	
 	@GetMapping
 	public String requestCartId(HttpServletRequest request) {
 		System.out.println("aaaa");
 		String sessionid = request.getSession(true).getId();
-		return "redirect:/cart/"+ sessionid;
+		return "redirect:/cart/" + sessionid;
 	}
 	
 	// 장바구니 생성 요청 처리
@@ -82,6 +80,7 @@ public class CartController {
 	
 	@Autowired
 	private BookService bookService;
+	
 	@PutMapping("/{cartId}")
 	public @ResponseBody Cart read(@PathVariable(value = "cartId") String cartId) {
 		System.out.println("dddd");
@@ -95,18 +94,16 @@ public class CartController {
 		
 		String sessionId = request.getSession(true).getId(); // 장바구니 ID 가져오기
 		Cart cart = cartService.read(sessionId); // 장바구니 내 모든 정보 가져오기
-		if(cart == null) {
+		if (cart == null) {
 			cart = cartService.create(new Cart(sessionId));
 	}
 		Book book = bookService.getBookById(bookId); // booId 정보 가져오기
-		if(book == null) {
+		if (book == null) {
 			throw new IllegalArgumentException(new BookIdException(bookId));
 	}
 		cart.addCartItem(new CartItem(book)); // 장바구니에 bookId 도서 등록하기
 		cartService.update(sessionId, cart); // 장바구니 갱신하기
 		}
-	
-	
 	
 	@DeleteMapping("/remove/{bookId}")
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
@@ -114,16 +111,17 @@ public class CartController {
 			HttpServletRequest request) {
 		String sessionId = request.getSession(true).getId(); // 장바구니 ID 가져오기
 		Cart cart = cartService.read(sessionId); // 장바구니 내 모든 정보 가져오기
-		if(cart == null) {
+		if (cart == null) {
 			cart = cartService.create(new Cart(sessionId));
+		}
 		Book book = bookService.getBookById(bookId); // bookId 정보 가져오기
-		if(book == null)
+		if (book == null)
 			throw new IllegalArgumentException(new BookIdException(bookId));
 		cart.removeCartItem(new CartItem(book));  // 장바구니에 bookId 도서 삭제하기
-		//cart.removeCartItem(bookId);  // bookId로 아이템 삭제
+		// cart.removeCartItem(bookId);  // bookId로 아이템 삭제
 		cartService.update(sessionId, cart); // 장바구니 갱신하기
 			
-		}
+		
 	} 
 }
 			

@@ -6,7 +6,7 @@ function addToCart(bookId){
 }
 
 function removeFromCart(bookid, cartId){ // 장바구니에 등록된 도서 항목을 삭제하는 메서드
-	document.removeForm.action = "/bookmarket/cart/book/"+bookid;
+	document.removeForm.action = "/bookmarket/cart/remove/"+bookid;
 	document.removeForm.submit();
 	setTimeout('location.reload()',10);
 }
