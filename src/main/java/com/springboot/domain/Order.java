@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -17,6 +18,7 @@ import lombok.Data;
 @Table(name = "orders")
 @Data
 public class Order {
+	
 	@Id
 	@GeneratedValue
 	private Long orderId; // 주문 아이디
@@ -29,7 +31,7 @@ public class Order {
 	@JoinColumn(name = "shipping_id")
 	private Shipping shipping; //배송지 객체
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "order_order_id")
 	private Map<String,OrderItem> orderItems =new HashMap<>(); //주문 아이템 객체
 	private BigDecimal grandTotal; // 주문 총 금액

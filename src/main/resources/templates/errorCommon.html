@@ -7,8 +7,10 @@
 </head>
 <body>
     <div class="container py-4">
+    <th:block th:replace="~{/module/header}"></th:block>
         <h2 class="alert alert-danger">오류가 발생했습니다.</h2>
         <p>[[${exception}]]</p>
+        <th:block th:replace="~{/module/footer}"></th:block>
     </div>
 </body>
 </html>

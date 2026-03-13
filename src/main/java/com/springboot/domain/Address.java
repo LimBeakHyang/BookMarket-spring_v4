@@ -1,9 +1,6 @@
 package com.springboot.domain;
 
-
-
 import org.hibernate.bytecode.internal.bytebuddy.PrivateAccessorException;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

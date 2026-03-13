@@ -6,7 +6,8 @@
 </head>
 <body>
     <div class="container py-4">
-        <header class="py-3 mb-4 border-bottom">
+    <th:block th:replace="~{/module/header}"></th:block>
+      <!-- <header class="py-3 mb-4 border-bottom">
             <div class="container d-flex flex-wrap justify-content-center">
                 <a href="/bookmarket/home" class="d-flex align-items-center link-body-emphasis text-body-emphasis text-decoration-none mb-3 mb-lg-0 me-lg-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
@@ -23,7 +24,7 @@
                     <span class="fs-4">BookMarket</span>
                 </a>
             </div>
-        </header>
+        </header> -->  
 
         <div class="p-5 mb-4 bg-body-tertiary rounded-3">
             <div class="container-fluid py-5">
@@ -39,6 +40,7 @@
             <p>[[${exception}]]</p>
             <p><a href="/bookmarket/books" class="btn btn-secondary">도서목록 &raquo;</a></p>
         </div>
+        <th:block th:replace="~{/module/footer}"></th:block>
     </div>
 </body>
 </html>

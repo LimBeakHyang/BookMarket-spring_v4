@@ -27,6 +27,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	
+	runtimeOnly 'com.mysql:mysql-connector-j' // MySQL 드라이버 추가
+    compileOnly 'org.projectlombok:lombok'    // 롬복 컴파일 단계 추가
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

@@ -25,6 +25,7 @@ public class SecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 	
+	/*
 	@Bean
 	protected UserDetailsService users() {
 		UserDetails admin = User.builder()
@@ -33,7 +34,7 @@ public class SecurityConfig {
 				.roles("ADMIN")
 				.build();
 		return new InMemoryUserDetailsManager(admin);
-	}
+	} */
 	
 	@Bean
 	protected SecurityFilterChain examMethod04(HttpSecurity http) throws Exception{
